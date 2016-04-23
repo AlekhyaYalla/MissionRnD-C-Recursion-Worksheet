@@ -22,9 +22,34 @@
 
 */
 #include "stdafx.h"
-
+#include<stdlib.h>
+void steps(int, int *);
 
 int get_steps(int s)
 {
-	return 0;
+	int c = 0;
+	if (s == 1)
+		return 1;
+	if (s == 0)
+		return 0;
+	steps(s, &c);
+	return c;
+}
+void steps(int n, int *c)
+{
+	if (n == 3)
+	{
+		*c = *c + 3;
+		return;
+	}
+	else if (n == 2)
+	{
+		*c = *c + 2;
+		return;
+	}
+	else
+	{
+		steps(n - 2, c);
+		steps(n - 1, c);
+	}
 }
